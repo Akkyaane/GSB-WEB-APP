@@ -1,0 +1,73 @@
+/* Login Page */
+
+.img-login {
+    height: 200px !important;
+    width: 200px !important;
+}
+
+.input-login:focus,
+.input-login:focus-visible {
+    border-color: #ffffff !important;
+    box-shadow: 0 0 0 0.25rem rgba(0, 201, 255, 0.5) !important;
+}
+
+.button-login {
+    background-color: #00c9ff !important;
+    border: solid 2px #00c9ff !important;
+}
+
+/* Visitor Page */
+
+nav {
+    border-bottom: solid black 1px !important;
+    width: 60% !important;
+}
+
+.img-visitor {
+    height: 175px !important;
+    width: 175px !important;
+}
+
+.a-visitor {
+    border-radius: 20px !important;
+    color: #000000 !important;
+    margin: 0 5px !important;
+    padding: 5px 15px !important;
+    text-decoration: none !important;
+}
+
+.a-visitor:hover {
+    background-color: #00c9ff !important;
+    border-radius: 20px !important;
+    color: white !important;
+    margin: 0 5px !important;
+    padding: 5px 15px !important;
+}
+
+.h2-visitor {
+    font-size: 1.5rem !important;
+}
+
+.div1-visitor {
+    width: 75% !important;
+}
+
+table {
+    border: solid black 1px !important;
+}
+
+th,
+tr,
+td {
+    border: solid black 1px;
+}
+
+.div2-visitor {
+    border-left: solid black 1px !important;
+    width: 25% !important;
+}
+
+.button-visitor {
+    background-color: #00c9ff !important;
+    border: solid 2px #00c9ff !important;
+}
