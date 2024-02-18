@@ -221,11 +221,11 @@ displayAlerts()
                 <h3>Traitement</h3>
                 <p>Statut :
                     <?php
-                    if (!(empty($treatment_data['status']))) {
-                        if ($treatment_data['status'] == 2) {
+                    if (!(empty($data['treatment_status']))) {
+                        if ($data['treatment_status'] == 2) {
                             echo "Refusée";
                         }
-                        if ($treatment_data['status'] == 1) {
+                        if ($data['treatment_status'] == 1) {
                             echo "Validée";
                         }
                     } else {
@@ -233,8 +233,8 @@ displayAlerts()
                     } ?>
                 </p>
                 <p>Détails du refus :
-                    <?php if (!(empty($treatment_data['remark']))) {
-                        echo $treatment_data['remark'];
+                    <?php if (!(empty($data['remark']))) {
+                        echo $data['remark'];
                     } else {
                         echo "N/A";
                     } ?>

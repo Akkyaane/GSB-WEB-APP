@@ -17,7 +17,7 @@ if (isset($_POST['submit'])) {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Le mot de passe est incorrect. Veuillez recommencer.";
     } else {
-        $_SESSION = ['id' => $data['id'], 'horsepower' => $data['kilometer_costs_id'], 'role' => $data['role_id'], 'first_name' => $data['first_name'], 'last_name' => $data['last_name'], 'email' => $data['email'], 'status' => $data['status']];
+        $_SESSION = ['id' => $data['user_id'], 'horsepower' => $data['kilometer_costs_id'], 'role' => $data['role_id'], 'first_name' => $data['first_name'], 'last_name' => $data['last_name'], 'email' => $data['email'], 'status' => $data['status']];
         header("Location: ../index.php");
     }
 }

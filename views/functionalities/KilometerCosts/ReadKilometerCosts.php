@@ -1,12 +1,6 @@
 <?php
 
-session_start();
-include "../../../../models/db/db.php";
-
-if (!$dbConnect) {
-    echo "Connexion échouée.";
-    echo "<br><button><a href='../../ac-home/ac-home.php'>Retour</a></button>";
-}
+displayAlerts()
 
 ?>
 
@@ -35,24 +29,17 @@ if (!$dbConnect) {
         </thead>
         <tbody>
         <?php
-            $sql = 'SELECT * FROM kilometercosts';
-            $kilometer_costs_data_request = $dbConnect->prepare($sql);
-            $kilometer_costs_data_request->execute();
-            $kilometer_costs_data = $kilometer_costs_data_request->fetchAll(PDO::FETCH_ASSOC);
-            if (!empty($kilometer_costs_data)) {
-                foreach ($kilometer_costs_data as $row) {
+                foreach ($data as $row) {
                     echo '<tr>'?>
                         <form action="ad-UpdateKilometerCostsArray.php" method="post">
                             <td><input type="number" step=0.01 class="form-control" name="horsepower" id="horsepower" value="<?php echo $row['horsepower'] ?>" readonly></td>
                             <td><input type="number" step=0.01 class="form-control" name="cost" id="cost" value="<?php echo $row['cost']?>" readonly></td>
                         </tr>
-            <?php }
-            };
+            <?php };
         ?>
         </tbody>
     </table>
     <div class="mt-3">
-                            <button type="submit" class="btn btn-primary" name="submit" id="submit">Modifier</button>
                             <button class="btn btn-primary"><a href="../../ad-home/ad-home.php" style="color: white; text-decoration: none">Retour</a></button>
     </div>
     </form>

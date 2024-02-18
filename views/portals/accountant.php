@@ -26,29 +26,29 @@ $_SESSION['message'] = NULL;
     <nav class="navbar">
       <ul class="nav">
         <li class="nav-item"><a class="nav-link text-black my-2 a-visitor"
-            href="../../controllers/portals/visitor.php?data">Mon
+            href="../../controllers/portals/accountant.php?data">Mon
             compte</a></li>
         <li class="nav-item"><a class="nav-link text-black my-2 a-visitor"
-            href="../../controllers/portals/visitor.php?settings">Paramètres</a></li>
+            href="../../controllers/portals/accountant.php?settings">Paramètres</a></li>
         <li class="nav-item"><a class="nav-link text-black my-2 a-visitor"
-            href="../../controllers/portals/visitor.php?logout">Déconnexion</a></li>
+            href="../../controllers/portals/accountant.php?logout">Déconnexion</a></li>
       </ul>
     </nav>
   </header>
-
   <main class="d-flex justify-center" style="width: 85%;">
     <div class="d-flex flex-column justify-center align-center m-2 w-100">
       <h2 class="text-center my-3 fs-3">Récapitulatif des fiches de frais</h2>
       <table class="table w-auto fs-6">
         <thead>
           <tr>
-            <th>Période</th>
-            <th>Création</th>
-            <th>Nuitée(s)</th>
-            <th>Total</th>
-            <th>À rembourser</th>
-            <th>À payer</th>
-            <th>Traitement</th>
+            <th>Période de référence</th>
+            <th>Date de création</th>
+            <th>Auteur</th>
+            <th>Nombre de nuitées</th>
+            <th>Montant total</th>
+            <th>Montant remboursé</th>
+            <th>Montant à payer</th>
+            <th>Statut du traitement</th>
             <th></th>
           </tr>
         </thead>
@@ -60,7 +60,8 @@ $_SESSION['message'] = NULL;
             $requestDate = new DateTime($row['request_date']);
             echo '<tr>
                   <td>Du <strong>' . $startDate->format('d/m/Y') . '</strong> au <strong>' . $endDate->format('d/m/Y') . '</strong></td>
-                  <td>' . $requestDate->format('d/m/Y') . '</td>';
+                  <td>' . $requestDate->format('d/m/Y') . '</td>
+                  <td>' . $row['last_name'] . ' ' . $row['first_name'] . '</td>';
             if ($row['nights_number'] == NULL) {
               $row['nights_number'] = 0;
               echo '<td>' . $row['nights_number'] . '</td>';
@@ -71,26 +72,25 @@ $_SESSION['message'] = NULL;
                   <td>' . $row['total_amount'] . '</td>
                   <td>' . $row['total_amount_refund'] . '</td>
                   <td>' . $row['total_amount_unrefund'] . '</td>';
-            if ($row['status'] == 1) {
+            if ($row['treatment_status'] == 1) {
               echo '
                   <td>Validée</td>
                   <td>
-                    <button class="btn btn-sm btn-primary button-visitor"><a href="../../controllers/portals/visitor?readExpenseSheet&readid=' . $row['expense_sheet_id'] . '" style="color: white; text-decoration: none">Consulter</a></button>
+                    <button class="btn btn-sm btn-primary button-visitor"><a href="../../controllers/portals/accountant?readExpenseSheet&readid=' . $row['expense_sheet_id'] . '" style="color: white; text-decoration: none">Consulter</a></button>
                   </td>';
-            } else if ($row['status'] == 2) {
+            } else if ($row['treatment_status'] == 2) {
               echo '
                   <td>Refusée</td>
                   <td>
-                    <button class="btn btn-sm btn-primary"><a href="../../controllers/portals/visitor?readExpenseSheet&readid=' . $row['expense_sheet_id'] . '" style="color: white; text-decoration: none">Consulter</a></button>
+                    <button class="btn btn-sm btn-primary"><a href="../../controllers/portals/accountant?readExpenseSheet&readid=' . $row['expense_sheet_id'] . '" style="color: white; text-decoration: none">Consulter</a></button>
                   </td>';
             } else {
               echo '
-                  <td>En traitement</td>
+                  <td>En attente de traitement</td>
                   <td>
-                    <button class="btn btn-sm btn-primary" style="background-color: #00c9ff; border-color: #00c9ff"><a href="../../controllers/portals/visitor.php?readExpenseSheet&readid=' . $row['expense_sheet_id'] . '" 
+                    <button class="btn btn-sm btn-primary" style="background-color: #00c9ff; border-color: #00c9ff"><a href="../../controllers/portals/accountant.php?readExpenseSheet&readid=' . $row['expense_sheet_id'] . '" 
                     style="color: white; text-decoration: none">Consulter</a></button>
-                    <button class="btn btn-sm btn-primary" style="background-color: #00c9ff; border-color: #00c9ff"><a href="../../controllers/portals/visitor.php?updateExpenseSheet&updateid=' . $row['expense_sheet_id'] . '"  style="color: white; text-decoration: none">Modifier</a></button>
-                    <button class="btn btn-sm btn-danger"><a href="../../controllers/portals/visitor.php?deleteExpenseSheet&deleteid=' . $row['expense_sheet_id'] . '" style="color: white; text-decoration: none">Supprimer</a></button>
+                    <button class="btn btn-sm btn-primary" style="background-color: #00c9ff; border-color: #00c9ff"><a href="../../controllers/portals/accountant.php?processExpenseSheet&readid=' . $row['expense_sheet_id'] . '&processid=' . $row['expense_sheet_id'] . '"  style="color: white; text-decoration: none">Traiter</a></button>
                   </td>';
             }
           }
@@ -102,6 +102,11 @@ $_SESSION['message'] = NULL;
           ?>
         </tbody>
       </table>
+      <div class="container mt-3">
+        <button class="btn btn-primary"><a
+            href="../../controllers/portals/accountant?readKilometerCosts"
+            style="color: white; text-decoration: none">Consulter le tableau des frais kilométriques</a></button>
+      </div>
     </div>
   </main>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"

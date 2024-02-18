@@ -152,6 +152,16 @@ function read_expense_sheet_data()
         return $error;
     }
 }
+function process_expense_sheet_data($treatment) {
+    try {
+        $sql = 'INSERT INTO treatment (treatment_id, treatment_status, remark) VALUES (:ti, :ts, :r)';
+        $request = dbConnection()->prepare($sql);
+        $request->execute($treatment);
+    } catch (Exception $e) {
+        $error = 'Erreur : ' . $e->getMessage();
+        return $error;
+    }
+}
 
 function delete_expense_sheet_data()
 {
