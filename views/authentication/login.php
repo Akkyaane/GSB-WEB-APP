@@ -1,6 +1,7 @@
 <?php
 
 displayAlerts();
+$_SESSION['message'] = NULL;
 
 ?>
 
