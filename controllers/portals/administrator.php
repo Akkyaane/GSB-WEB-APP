@@ -8,6 +8,31 @@ require("../../models/functionalities/KilometerCosts/ManageKilometerCosts.php");
 
 $data = get_users_data();
 
+$accountants = 0;
+$administrators = 0;
+$visitors = 0;
+$activated_accounts = 0;
+$deactivated_accounts = 0;
+
+foreach ($data as $row) {
+    if ($row['role_id'] == 1) {
+        $administrators += 1;
+    }
+    else if ($row['role_id'] == 2) {
+        $accountants += 1;
+    }
+    else {
+        $visitors += 1;
+    }
+
+    if ($row['status'] == 1) {
+        $activated_accounts += 1;
+    }
+    else {
+        $deactivated_accounts += 1;
+    }
+}
+
 if (isset($_GET['logout'])) {
     header("Location: ../authentication/logout.php");
 }

@@ -19,28 +19,28 @@ $_SESSION['message'] = NULL;
 </head>
 
 <body>
-    <div class="container--fluid d-flex flex-column align-items-center">
-        <img class="img-login" src="../../assets/content/logo.png" alt="logo" />
-        <div class="container--fluid d-flex align-items-center justify-content-center">
+    <div class="container d-flex flex-column align-items-center justify-content-center">
+        <img class="img-fluid" style="width: 200px;" src="../../assets/content/logo.png" alt="logo">
+        <div class="container d-flex align-items-center justify-content-center">
             <form action="../../controllers/authentication/login.php" method="post">
-                <div class="py-2">
-                    <p class="h2 d-flex justify-content-center">Bienvenue</p>
+                <div class="d-flex flex-column justify-content-center">
+                    <h2 class="fs-3">Bienvenue</h2>
                     <p>Veuillez vous connecter pour accéder à votre compte.</p>
                 </div>
-                <div class="py-2">
-                    <input type="email" class="form-control input-login" name="email" id="email" placeholder="E-mail"
+                <div class="pt-3">
+                    <input type="email" class="form-control input" name="email" id="email" placeholder="E-mail"
                         required />
                 </div>
-                <div class="py-2">
-                    <input type="password" class="form-control input-login" name="password" id="password"
+                <div class="pt-3">
+                    <input type="password" class="form-control input" name="password" id="password"
                         placeholder="Mot de passe" required />
                 </div>
-                <div class="py-2">
+                <div class="pt-3">
                     <a class="link-dark link-offset-2 link-underline-opacity-0 link-underline-opacity-100-hover"
                         href="#">Mot de passe oublié ?</a>
                 </div>
-                <div class="py-2">
-                    <button type="submit" class="btn btn-primary d-grid gap-2 col-12 mx-auto button-login" name="submit"
+                <div class="pt-3">
+                    <button type="submit" class="btn btn-primary  a-link" name="submit"
                         id="submit">
                         Se connecter
                     </button>
