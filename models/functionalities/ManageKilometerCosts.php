@@ -15,6 +15,29 @@ function get_kilometer_cost_data()
     }
 }
 
+function update_kilometer_costs_data($h, $c)
+{
+    try {
+        $sql = 'UPDATE kilometer_costs SET horsepower = :h, cost = :c WHERE kilometer_cost_id = :id';
+        $request = dbConnection()->prepare($sql);
+
+        for ($i = 0; $i < count($h); $i++) {
+            $horsepower = $h[$i];
+            $cost = $c[$i];
+            $id = $i + 1;
+
+            $request->bindParam(':h', $horsepower);
+            $request->bindParam(':c', $cost);
+            $request->bindParam(':id', $id);
+
+            $request->execute();
+        }
+    } catch (Exception $e) {
+        $error = "Erreur : " . $e->getMessage();
+        return $error;
+    }
+}
+
 function read_kilometer_costs_data()
 {
     try {
@@ -28,31 +51,3 @@ function read_kilometer_costs_data()
         return $error;
     }
 }
-
-// if (isset($_POST["submit"])) {
-//     $horsepowers = $_POST["horsepower"];
-//     $costs = $_POST["cost"];
-//     $id = 0;
-//     if (count($horsepowers) === count($costs)) {
-//         $count = count($horsepowers);
-//         for ($i = 0; $i < $count; $i++) {
-//             $h = $horsepowers[$i];
-//             $c = $costs[$i];
-//             $id++;
-//             $sql = "UPDATE kilometercosts SET horsepower = :h, cost = :c WHERE id = :id";
-//             $result = $dbConnect->prepare($sql);
-//             $result->bindParam(":h", $h);
-//             $result->bindParam(":c", $c);
-//             $result->bindParam(":id", $id);
-//             $result->execute();
-//         }
-//         echo "Le tableau a été modifié.";
-//         echo "<br><br><button><a href="../../../views/administrator/ad-home/ad-home.php">Retour</a></button>";
-//     } else {
-//         echo "Un des champs est vide.";
-//         echo "<br><button><a href="../../../views/administrator/ad-functionalities/ad-KilometerCostsArray/ad-UpdateKilometerCostsArray.php">Retour</a></button>";
-//     }
-// } else {
-//     echo "Un problème est survenu. Veuillez recommencer.";
-//     echo "<br><button><a href="../../../views/administrator/ad-functionalities/ad-KilometerCostsArray/ad-UpdateKilometerCostsArray.php">Retour</a></button>";
-// }

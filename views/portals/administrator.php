@@ -27,8 +27,6 @@ $_SESSION["message"] = NULL;
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/administrator.php?data">Compte</a></li>
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-            href="../../controllers/portals/administrator.php?settings">Paramètres</a></li>
-        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/administrator.php?logout">Déconnexion</a></li>
       </ul>
     </nav>
@@ -72,7 +70,7 @@ $_SESSION["message"] = NULL;
                 <td>" . $row["role_id"] . "</td>
                 <td>" . $row["status"] . "</td>
                 <td>
-                <a class='btn btn-primary c-link' href='../../controllers/portals/administrator?id=" . $row["user_id"] . "'>Gérer</a>
+                <a class='btn btn-primary c-link' href='../../controllers/portals/administrator?manageUser&id=" . $row["user_id"] . "'>Gérer</a>
                 </td>";
             }
             if (!$data) {
@@ -85,7 +83,7 @@ $_SESSION["message"] = NULL;
       </div>
       <a class="btn btn-primary mb-1 c-link" href="../../controllers/portals/administrator?createUser">Créer
         un utilisateur</a>
-      <a class="btn btn-primary mb-1 c-link" href="../../controllers/portals/administrator?updateKilometerCosts">Gérer
+      <a class="btn btn-primary mb-1 c-link" href="../../controllers/portals/administrator?manageKilometerCosts">Gérer
         les frais kilométriques</a>
     </div>
     <div class="container d-flex px-2 pt-2 pb-5">

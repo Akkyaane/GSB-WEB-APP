@@ -27,8 +27,6 @@ $_SESSION["message"] = NULL;
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/accountant.php?data">Compte</a></li>
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-            href="../../controllers/portals/accountant.php?settings">Paramètres</a></li>
-        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/accountant.php?logout">Déconnexion</a></li>
       </ul>
     </nav>
@@ -92,7 +90,7 @@ $_SESSION["message"] = NULL;
           </tbody>
         </table>
       </div>
-      <a class="btn btn-primary c-link" href="../../controllers/portals/accountant.php?readKilometerCosts">Consulter
+      <a class="btn btn-primary c-link" href="../../controllers/portals/accountant.php?manageKilometerCosts">Consulter
         les frais kilométriques</a>
     </div>
     <div class="container d-flex px-2 pt-2 pb-5">

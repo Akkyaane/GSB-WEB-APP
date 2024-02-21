@@ -42,10 +42,6 @@ if (isset($_GET["data"])) {
     header("Location: ../functionalities/UpdateData.php");
 }
 
-if (isset($_GET["settings"])) {
-    header("Location: ../functionalities/UpdateSettings.php");
-}
-
 if (isset($_GET["logout"])) {
     header("Location: ../authentication/logout.php");
 }

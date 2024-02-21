@@ -33,10 +33,6 @@ if (isset($_GET["data"])) {
     header("Location: ../functionalities/UpdateData.php");
 }
 
-if (isset($_GET["settings"])) {
-    header("Location: ../functionalities/UpdateSettings.php");
-}
-
 if (isset($_GET["logout"])) {
     header("Location: ../authentication/logout.php");
 }
@@ -45,12 +41,12 @@ if (isset($_GET["createUser"])) {
     header("Location: ../functionalities/User/CreateUser.php");
 }
 
-if (isset($_GET["updateKilometerCosts"])) {
-    header("Location: ../functionalities/KilometerCosts/UpdateKilometerCosts.php");
+if (isset($_GET["manageKilometerCosts"])) {
+    header("Location: ../functionalities/KilometerCosts/ManageKilometerCosts.php");
 }
 
 if (isset($_GET["manageUser"])) {
-    header("Location: ../functionalities/Users/ManageUser.php?id=" . $_GET["id"]);
+    header("Location: ../functionalities/User/ManageUser.php?id=" . $_GET["id"]);
 }
 
 require("../../views/portals/administrator.php");

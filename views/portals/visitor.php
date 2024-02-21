@@ -27,8 +27,6 @@ $_SESSION["message"] = NULL;
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/visitor.php?data">Compte</a></li>
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-            href="../../controllers/portals/visitor.php?settings">Paramètres</a></li>
-        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/visitor.php?logout">Déconnexion</a></li>
       </ul>
     </nav>

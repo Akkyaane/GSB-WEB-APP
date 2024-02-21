@@ -10,7 +10,7 @@ displayAlerts();
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>GSB - Utilisateurs</title>
+  <title>GSB - Frais kilométriques</title>
   <link rel="stylesheet" href="../../../assets/style.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
     integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
@@ -34,58 +34,36 @@ displayAlerts();
   </header>
   <main>
     <div class="container p-3">
-      <h2 class="mb-3 fs-4 fw-bold">Utilisateur n°<?php echo $_GET['id'] ?>
+      <h2 class="mb-3 fs-4 fw-bold">Tableau des frais kilométriques
       </h2>
       <div class="container mb-3 p-0 overflow-auto" style="max-height: 35vh;">
         <table class="table">
           <thead>
             <tr>
-              <th>Nom</th>
-              <th>Prénom</th>
-              <th>E-mail</th>
-              <th>Rôle</th>
               <th>Nombre de chevaux</th>
+              <th>Prix au kilomètre</th>
             </tr>
           </thead>
           <tbody>
             <?php
-            echo "
-                <td>" . $data["last_name"] . "</td>
-                <td>" . $data["first_name"] . "</td>
-                <td>" . $data["email"] . "</td>";
-            if ($data["role_id"] == 1) {
-              echo "<td>Administrateur</td>";
-            } elseif ($data["role_id"] == 2) {
-              echo "<td>Comptable</td>";
-            } else {
-              echo "<td>Visiteur médical</td>";
-            }
-            if ($data["kilometer_costs_id"]) {
-              echo "<td>" . $data["kilometer_costs_id"] . "</td>";
-            } else {
-              echo "<td>N/A</td>";
-            }
-            if ($data["status"] == 1) {
-              echo "<td>Activé</td>";
-            } else {
-              echo "<td>Désactivé</td></tr>";
+            foreach ($data as $row) {
+              echo "<tr>
+                <td>" . $row["horsepower"] . "</td>
+                <td>" . $row["cost"] . "</td></tr>";
             }
             ?>
           </tbody>
         </table>
-        <?php
-        if ($data["status"] == 1) {
-          echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/User/UpdateUser.php?id=" . $_GET['id'] . "'>Modifier</a>
-          <a class='btn btn-primary c-link' href='../../../controllers/functionalities/User/DeactivateUser.php?deactivateid=" . $_GET['id'] . "'>Désactiver</a>
-      <a class='btn btn-primary c-link' href='../../../controllers/portals/administrator.php'>Retour</a>";
-        } else {
-          echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/User/UpdateUser.php'>Modifier</a>
-          <a class='btn btn-primary c-link' href='../../../controllers/functionalities/User/ReactivateUser.php?reactivateid=" . $_GET['id'] . "'>Réactiver</a>
-      <a class='btn btn-primary c-link' href='../../../controllers/portals/administrator.php'>Retour</a>";
-        }
-
-        ?>
       </div>
+      <?php
+      if ($_SESSION['role'] == 1) {
+        echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/KilometerCosts/UpdateKilometerCosts.php'>Modifier</a>
+        <a class='btn btn-primary c-link' href='../../../controllers/portals/administrator.php'>Retour</a>";
+      }
+      if ($_SESSION['role'] == 2) {
+        echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
+      }
+      ?>
     </div>
   </main>
 
