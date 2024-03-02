@@ -1,6 +1,6 @@
 <?php
 
-function get_data()
+function get_account_data()
 {
     try {
         $sql = "SELECT * FROM users u where u.user_id = ?";
@@ -15,7 +15,8 @@ function get_data()
     }
 }
 
-function update_data($user) {
+function update_account_data($user)
+{
     try {
         $sql = 'UPDATE users SET first_name=:fn, last_name=:ln, email=:e WHERE user_id=:id';
         $request = dbConnection()->prepare($sql);

@@ -5,7 +5,7 @@ require('../../../assets/tools.php');
 require('../../../models/db.php');
 require('../../../models/functionalities/ManageKilometerCosts.php');
 
-$data = read_kilometer_costs_data();
+$data = get_kilometer_costs_data();
 
 if (isset($_POST['submit'])) {
     $horsepowers = [$_POST['horsepower']];

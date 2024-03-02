@@ -29,8 +29,8 @@ foreach ($data as $row) {
     }
 }
 
-if (isset($_GET["data"])) {
-    header("Location: ../functionalities/UpdateData.php");
+if (isset($_GET["manageAccount"])) {
+    header("Location: ../functionalities/account/ManageAccount.php");
 }
 
 if (isset($_GET["logout"])) {
@@ -38,7 +38,7 @@ if (isset($_GET["logout"])) {
 }
 
 if (isset($_GET["createUser"])) {
-    header("Location: ../functionalities/User/CreateUser.php");
+    header("Location: ../functionalities/user/CreateUser.php");
 }
 
 if (isset($_GET["manageKilometerCosts"])) {
@@ -46,7 +46,7 @@ if (isset($_GET["manageKilometerCosts"])) {
 }
 
 if (isset($_GET["manageUser"])) {
-    header("Location: ../functionalities/User/ManageUser.php?id=" . $_GET["id"]);
+    header("Location: ../functionalities/user/ManageUser.php?id=" . $_GET["id"]);
 }
 
 require("../../views/portals/administrator.php");

@@ -6,7 +6,6 @@ require("../../../models/db.php");
 require("../../../models/functionalities/ManageExpenseSheet.php");
 
 $result = delete_expense_sheet_data();
-
 if (!$result) {
     $_SESSION['http_status'] = 200;
     $_SESSION['message'] = "La fiche de frais a été supprimée.";

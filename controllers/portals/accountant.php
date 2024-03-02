@@ -38,8 +38,8 @@ foreach ($data as $row) {
 $transport_expense_refund = $kilometer_expense_refund + $transport_expense_refund;
 $transport_expense_unrefund = $kilometer_expense_unrefund + $transport_expense_unrefund;
 
-if (isset($_GET["data"])) {
-    header("Location: ../functionalities/UpdateData.php");
+if (isset($_GET["manageAccount"])) {
+    header("Location: ../functionalities/account/ManageAccount.php");
 }
 
 if (isset($_GET["logout"])) {

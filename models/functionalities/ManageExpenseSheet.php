@@ -44,11 +44,12 @@ function get_user_expense_sheets_data()
     }
 }
 
-function get_max_receipts_id_data()
+function get_receipts_data()
 {
     try {
-        $sql = "SELECT MAX(receipts_id) AS max_id FROM receipts";
+        $sql = "SELECT e.*, r.* FROM expense_sheets e INNER JOIN receipts r ON e.receipts_id = r.receipts_id WHERE e.expense_sheet_id = ?";
         $request = dbConnection()->prepare($sql);
+        $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
         $request->execute();
         $data = $request->fetch(PDO::FETCH_ASSOC);
         return $data;
@@ -58,12 +59,11 @@ function get_max_receipts_id_data()
     }
 }
 
-function get_receipts_data()
+function get_max_receipts_id_data()
 {
     try {
-        $sql = "SELECT e.*, r.* FROM expense_sheets e INNER JOIN receipts r ON e.receipts_id = r.receipts_id WHERE e.expense_sheet_id = ?";
+        $sql = "SELECT MAX(receipts_id) AS max_id FROM receipts";
         $request = dbConnection()->prepare($sql);
-        $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
         $request->execute();
         $data = $request->fetch(PDO::FETCH_ASSOC);
         return $data;
@@ -125,12 +125,13 @@ function update_expense_sheet_data($expense_sheet)
     }
 }
 
-function insert_treatment_data($treatment)
+function delete_expense_sheet_data()
 {
     try {
-        $sql = "INSERT INTO treatment (treatment_id, treatment_status, remark) VALUES (:ti, :ts, :r)";
+        $sql = "DELETE FROM expense_sheets WHERE expense_sheet_id = ?";
         $request = dbConnection()->prepare($sql);
-        $request->execute($treatment);
+        $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
+        $request->execute();
     } catch (Exception $e) {
         $error = "Erreur : " . $e->getMessage();
         return $error;
@@ -144,34 +145,6 @@ function process_expense_sheet_data()
         $request = dbConnection()->prepare($sql);
         $request->bindParam(":ti", $_GET["processid"]);
         $request->bindParam(":id", $_GET["processid"]);
-        $request->execute();
-    } catch (Exception $e) {
-        $error = "Erreur : " . $e->getMessage();
-        return $error;
-    }
-}
-
-function read_expense_sheet_data()
-{
-    try {
-        $sql = "SELECT e.*, r.*, t.* FROM expense_sheets e LEFT JOIN receipts r ON e.receipts_id = r.receipts_id LEFT JOIN treatment t ON e.treatment_id = t.treatment_id WHERE e.expense_sheet_id = ?";
-        $request = dbConnection()->prepare($sql);
-        $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
-        $request->execute();
-        $data = $request->fetch(PDO::FETCH_ASSOC);
-        return $data;
-    } catch (Exception $e) {
-        $error = "Erreur : " . $e->getMessage();
-        return $error;
-    }
-}
-
-function delete_expense_sheet_data()
-{
-    try {
-        $sql = "DELETE FROM expense_sheets WHERE expense_sheet_id = ?";
-        $request = dbConnection()->prepare($sql);
-        $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
         $request->execute();
     } catch (Exception $e) {
         $error = "Erreur : " . $e->getMessage();
@@ -227,6 +200,18 @@ function upload_files($target_file, $fileToUpload)
             }
         }
         return $uploadOk;
+    } catch (Exception $e) {
+        $error = "Erreur : " . $e->getMessage();
+        return $error;
+    }
+}
+
+function insert_treatment_data($treatment)
+{
+    try {
+        $sql = "INSERT INTO treatment (treatment_id, treatment_status, remark) VALUES (:ti, :ts, :r)";
+        $request = dbConnection()->prepare($sql);
+        $request->execute($treatment);
     } catch (Exception $e) {
         $error = "Erreur : " . $e->getMessage();
         return $error;

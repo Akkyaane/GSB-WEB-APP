@@ -5,7 +5,7 @@ require('../../../assets/tools.php');
 require('../../../models/db.php');
 require('../../../models/functionalities/ManageExpenseSheet.php');
 
-$data = read_expense_sheet_data();
+$data = get_expense_sheet_data();
 
 if (isset($_GET['processid'])) {
     if (isset($_POST['validate_submit'])) {

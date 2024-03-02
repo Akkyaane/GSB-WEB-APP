@@ -1,5 +1,19 @@
 <?php
 
+function get_kilometer_costs_data()
+{
+    try {
+        $sql = "SELECT * FROM kilometer_costs";
+        $request = dbConnection()->prepare($sql);
+        $request->execute();
+        $data = $request->fetchAll(PDO::FETCH_ASSOC);
+        return $data;
+    } catch (Exception $e) {
+        $error = "Erreur : " . $e->getMessage();
+        return $error;
+    }
+}
+
 function get_kilometer_cost_data()
 {
     try {
@@ -32,20 +46,6 @@ function update_kilometer_costs_data($h, $c)
 
             $request->execute();
         }
-    } catch (Exception $e) {
-        $error = "Erreur : " . $e->getMessage();
-        return $error;
-    }
-}
-
-function read_kilometer_costs_data()
-{
-    try {
-        $sql = "SELECT * FROM kilometer_costs";
-        $request = dbConnection()->prepare($sql);
-        $request->execute();
-        $data = $request->fetchAll(PDO::FETCH_ASSOC);
-        return $data;
     } catch (Exception $e) {
         $error = "Erreur : " . $e->getMessage();
         return $error;

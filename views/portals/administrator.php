@@ -23,9 +23,9 @@ $_SESSION["message"] = NULL;
   justify-center align-items-center">
     <img class="img-fluid" style="width: 150px;" src="../../assets/content/logo.png" alt="logo">
     <nav class="navbar">
-      <ul class="nav my-2 fw-medium border-bottom border-1">
+      <ul class="nav fw-medium border-bottom border-1">
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-            href="../../controllers/portals/administrator.php?data">Compte</a></li>
+            href="../../controllers/portals/administrator.php?manageAccount">Mon compte</a></li>
         <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
             href="../../controllers/portals/administrator.php?logout">Déconnexion</a></li>
       </ul>
@@ -33,9 +33,9 @@ $_SESSION["message"] = NULL;
   </header>
 
   <main>
-    <div class="container p-3">
-      <h2 class="mb-2 ps-2 fs-4 fw-bold">Tableau des utilisateurs enregistrés</h2>
-      <div class="container mb-3 p-0 overflow-auto" style="max-height: 35vh;">
+    <div class="container p-2">
+      <h2 class="mb-3 ps-2 fs-4 fw-bold">Tableau des utilisateurs enregistrés</h2>
+      <div class="container mb-3 p-0 overflow-auto" style="max-height: 50vh;">
         <table class="table">
           <thead>
             <tr>
@@ -86,8 +86,8 @@ $_SESSION["message"] = NULL;
       <a class="btn btn-primary mb-1 c-link" href="../../controllers/portals/administrator?manageKilometerCosts">Gérer
         les frais kilométriques</a>
     </div>
-    <div class="container d-flex px-2 pt-2 pb-5">
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2  justify-content-center align-items-center w-100">
+    <div class="container d-flex p-4">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 justify-content-center align-items-center w-100">
         <div class="col m-2" style="max-width: 800px;">
           <canvas id="administrator-chart-1"></canvas>
         </div>

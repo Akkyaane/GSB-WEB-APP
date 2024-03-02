@@ -10,34 +10,35 @@ displayAlerts();
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>GSB - Utilisateurs</title>
-    <link rel="stylesheet" href="../../assets/style.css">
+    <title>GSB - Mon compte</title>
+    <link rel="stylesheet" href="../../../assets/style.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
-    <script defer src="../../assets/script.js"></script>
+    <script defer src="../../../assets/script.js"></script>
 </head>
 
 <body>
     <header class="d-flex flex-column
     justify-center align-items-center">
-        <img class="img-fluid" style="width: 150px;" src="../../assets/content/logo.png" alt="logo">
+        <img class="img-fluid" style="width: 150px;" src="../../../assets/content/logo.png" alt="logo">
         <nav class="navbar">
-            <ul class="nav my-2 fw-medium border-bottom border-1">
+            <ul class="nav fw-medium border-bottom border-1">
                 <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-                        href="../../controllers/portals/visitor.php?data">Compte</a></li>
+                        href="../../../controllers/portals/visitor.php?manageAccount">Mon compte</a></li>
                 <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-                        href="../../controllers/portals/visitor.php?settings">Paramètres</a></li>
-                <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-                        href="../../controllers/portals/visitor.php?logout">Déconnexion</a></li>
+                        href="../../../controllers/portals/visitor.php?logout">Déconnexion</a></li>
             </ul>
         </nav>
     </header>
+
     <main>
-        <div class="container p-3">
-            <h2 class="mb-3 fs-4 fw-bold">Mes informations
+        <div class="container p-2">
+            <h2 class="mb-3 ps-2 fs-4 fw-bold">Modifier mes informations</h2>
             </h2>
-            <form action="../../controllers/functionalities/UpdateData.php?updateid=<?php echo $_SESSION['id'] ?>" method="post">
-                <div class="container mb-3 p-0 overflow-auto" style="max-height: 35vh;">
+            <form
+                action="../../../controllers/functionalities/account/UpdateAccount.php?updateid=<?php echo $_SESSION['id'] ?>"
+                method="post">
+                <div class="container mb-3 p-0 overflow-auto" style="max-height: 40vh;">
                     <table class="table">
                         <thead>
                             <tr>
@@ -58,13 +59,13 @@ displayAlerts();
                 </div>
                 <button type="submit" class="btn btn-primary c-link" name="submit" id="submit">Soumettre</button>
                 <?php
-                            if ($_SESSION['role'] == 1) {
-                              echo "<a class='btn btn-primary c-link' href='../../controllers/portals/administrator.php'>Retour</a>";
-                            } else if ($_SESSION['role'] == 2) {
-                              echo "<a class='btn btn-primary c-link' href='../../controllers/portals/accountant.php'>Retour</a>";
-                            } else {
-                              echo "<a class='btn btn-primary c-link' href='../../controllers/portals/visitor.php'>Retour</a>";
-                            }
+                if ($_SESSION['role'] == 1) {
+                    echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/administrator.php'>Retour</a>";
+                } else if ($_SESSION['role'] == 2) {
+                    echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
+                } else {
+                    echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php'>Retour</a>";
+                }
                 ?>
             </form>
         </div>

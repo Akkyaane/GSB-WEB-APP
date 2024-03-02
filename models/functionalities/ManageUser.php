@@ -1,5 +1,6 @@
 <?php
-function get_users_data() {
+function get_users_data()
+{
     try {
         $sql = "SELECT u.*, kc.*, r.* FROM users u LEFT JOIN kilometer_costs kc ON u.kilometer_costs_id = kc.kilometer_cost_id INNER JOIN role r ON u.role_id = r.role_id";
         $request = dbConnection()->prepare($sql);
@@ -12,7 +13,8 @@ function get_users_data() {
     }
 }
 
-function get_user_data() {
+function get_user_data()
+{
     try {
         $sql = "SELECT u.*, kc.*, r.* FROM users u LEFT JOIN kilometer_costs kc ON u.kilometer_costs_id = kc.kilometer_cost_id INNER JOIN role r ON u.role_id = r.role_id where user_id = ?";
         $request = dbConnection()->prepare($sql);
@@ -26,7 +28,8 @@ function get_user_data() {
     }
 }
 
-function insert_user_data($user) {
+function insert_user_data($user)
+{
     try {
         $sql = 'INSERT INTO users (kilometer_costs_id, role_id, first_name, last_name, email, password, status) VALUES (:kci, :ri, :fn, :ln, :e, :p, :s)';
         $request = dbConnection()->prepare($sql);
@@ -37,7 +40,8 @@ function insert_user_data($user) {
     }
 }
 
-function update_user_data($user) {
+function update_user_data($user)
+{
     try {
         $sql = 'UPDATE users SET kilometer_costs_id=:kci, role_id=:ri, first_name=:fn, last_name=:ln, email=:e WHERE user_id=:id';
         $request = dbConnection()->prepare($sql);
@@ -54,7 +58,8 @@ function update_user_data($user) {
     }
 }
 
-function deactivate_user() {
+function deactivate_user()
+{
     try {
         $sql = "UPDATE users SET status = 0 WHERE user_id=?";
         $request = dbConnection()->prepare($sql);
@@ -66,7 +71,8 @@ function deactivate_user() {
     }
 }
 
-function reactivate_user() {
+function reactivate_user()
+{
     try {
         $sql = "UPDATE users SET status = 1 WHERE user_id=?";
         $request = dbConnection()->prepare($sql);
