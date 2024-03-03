@@ -72,7 +72,7 @@ displayAlerts();
             </tbody>
           </table>
           <button type="submit" class="btn btn-primary c-link" name="submit" id="submit">Soumettre</button>
-          <a class="btn btn-primary c-link" href="../../../controllers/portals/administrator?manageUser&id=<?php echo $data["user_id"] ?>">Retour</a>
+          <a class="btn btn-primary c-link" href="../../../controllers/portals/administrator.php?manageUser&id=<?php echo $data["user_id"] ?>">Retour</a>
         </form>
       </div>
     </div>

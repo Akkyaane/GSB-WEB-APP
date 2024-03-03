@@ -273,19 +273,19 @@ displayAlerts();
             <?php
             if ($data['treatment_status']) {
               if ($_SESSION['role'] == 2) {
-                echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant'>Retour</a>";
+                echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
               }
               if ($_SESSION['role'] == 3) {
-                echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/visitor'>Retour</a>";
+                echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php'>Retour</a>";
               }
             } else {
               if ($_SESSION['role'] == 2) {
-                echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/ProcessExpenseSheet?id=" . $_GET['id'] . "'>Traiter</a>
+                echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/ProcessExpenseSheet.php?id=" . $_GET['id'] . "'>Traiter</a>
                 <a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
               }
               if ($_SESSION['role'] == 3) {
-                echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/UpdateExpenseSheet?id=" . $_GET['id'] . "'>Modifier</a>
-                                <a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/DeleteExpenseSheet?id=" . $_GET['id'] . "'>Supprimer</a>
+                echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/UpdateExpenseSheet.php?id=" . $_GET['id'] . "'>Modifier</a>
+                                <a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/DeleteExpenseSheet.php?id=" . $_GET['id'] . "'>Supprimer</a>
                                 <a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php'>Retour</a>";
               }
             }
