@@ -23,12 +23,12 @@ displayAlerts();
     <nav class="navbar">
       <ul class="nav fw-medium border-bottom border-1">
         <?php
-        if ($_SESSION['role'] == 1) {
+        if ($_SESSION["role"] == 1) {
           echo "<li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/administrator.php?manageAccount'>Mon compte</a></li>
                   <li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/administrator.php?logout'>Déconnexion</a></li>";
-        } else if ($_SESSION['role'] == 2) {
+        } else if ($_SESSION["role"] == 2) {
           echo "<li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/accountant.php?manageAccount'>Mon compte</a></li>
                   <li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
@@ -49,7 +49,7 @@ displayAlerts();
       <h2 class="mb-3 fs-4 fw-bold">Modifier mes informations</h2>
       </h2>
       <div class="container p-0">
-        <form action="../../../controllers/functionalities/account/UpdateAccount.php?updateid=<?php echo $_SESSION['id'] ?>" method="post">
+        <form action="../../../controllers/functionalities/account/UpdateAccount.php?updateid=<?php echo $_SESSION["id"] ?>" method="post">
           <table class="table">
             <thead>
               <tr>
@@ -61,17 +61,17 @@ displayAlerts();
             <tbody>
               <?php
               echo "<tr>
-                      <td><input type='text' class='form-control input' name='last_name' id='last_name' value='" . $data['last_name'] . "' required></td>
-                      <td><input type='text' class='form-control input' name='first_name' id='first_name' value='" . $data['first_name'] . "' required></td>
-                      <td><input type='text' class='form-control input' name='email' id='email' value='" . $data['email'] . "' required></td></tr>";
+                      <td><input type='text' class='form-control input' name='last_name' id='last_name' value='" . $data["last_name"] . "' required></td>
+                      <td><input type='text' class='form-control input' name='first_name' id='first_name' value='" . $data["first_name"] . "' required></td>
+                      <td><input type='text' class='form-control input' name='email' id='email' value='" . $data["email"] . "' required></td></tr>";
               ?>
             </tbody>
           </table>
           <button type="submit" class="btn btn-primary c-link" name="submit" id="submit">Soumettre</button>
           <?php
-          if ($_SESSION['role'] == 1) {
+          if ($_SESSION["role"] == 1) {
             echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/administrator.php?manageAccount'>Retour</a>";
-          } else if ($_SESSION['role'] == 2) {
+          } else if ($_SESSION["role"] == 2) {
             echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php?manageAccount'>Retour</a>";
           } else {
             echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php?manageAccount'>Retour</a>";

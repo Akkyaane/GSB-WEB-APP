@@ -32,7 +32,7 @@ function get_kilometer_cost_data()
 function update_kilometer_costs_data($h, $c)
 {
   try {
-    $sql = 'UPDATE kilometer_costs SET horsepower = :h, cost = :c WHERE kilometer_cost_id = :id';
+    $sql = "UPDATE kilometer_costs SET horsepower = :h, cost = :c WHERE kilometer_cost_id = :id";
     $request = dbConnection()->prepare($sql);
 
     for ($i = 0; $i < count($h); $i++) {
@@ -40,9 +40,9 @@ function update_kilometer_costs_data($h, $c)
       $cost = $c[$i];
       $id = $i + 1;
 
-      $request->bindParam(':h', $horsepower);
-      $request->bindParam(':c', $cost);
-      $request->bindParam(':id', $id);
+      $request->bindParam(":h", $horsepower);
+      $request->bindParam(":c", $cost);
+      $request->bindParam(":id", $id);
 
       $request->execute();
     }

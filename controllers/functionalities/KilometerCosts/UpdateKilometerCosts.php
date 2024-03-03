@@ -1,15 +1,15 @@
 <?php
 
 session_start();
-require('../../../assets/tools.php');
-require('../../../models/db.php');
-require('../../../models/functionalities/ManageKilometerCosts.php');
+require("../../../assets/tools.php");
+require("../../../models/db.php");
+require("../../../models/functionalities/ManageKilometerCosts.php");
 
 $data = get_kilometer_costs_data();
 
-if (isset($_POST['submit'])) {
-  $horsepowers = [$_POST['horsepower']];
-  $costs = [$_POST['cost']];
+if (isset($_POST["submit"])) {
+  $horsepowers = [$_POST["horsepower"]];
+  $costs = [$_POST["cost"]];
 
   if (count($horsepowers) == count($costs)) {
     $count = count($horsepowers);
@@ -25,12 +25,12 @@ if (isset($_POST['submit'])) {
   }
 
   if (!$result) {
-    $_SESSION['http_status'] = 200;
-    $_SESSION['message'] = "Le tableau des frais kilométriques a été modifié.";
-    header('Location: ../../portals/administrator.php');
+    $_SESSION["http_status"] = 200;
+    $_SESSION["message"] = "Le tableau des frais kilométriques a été modifié.";
+    header("Location: ../../portals/administrator.php");
   } else {
-    $_SESSION['http_status'] = 400;
-    $_SESSION['message'] = "Un problème est survenu. Veuillez recommencer.";
+    $_SESSION["http_status"] = 400;
+    $_SESSION["message"] = "Un problème est survenu. Veuillez recommencer.";
     header("Location: UpdateKilometerCosts");
   }
 }

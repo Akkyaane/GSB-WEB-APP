@@ -31,7 +31,7 @@ displayAlerts();
   <main>
     <div class="container p-2">
       <h2 class="mb-3 fs-4 fw-bold">Gérer l'utilisateur n°
-        <?php echo $_GET['id'] ?>
+        <?php echo $_GET["id"] ?>
       </h2>
       <div class="container p-0">
         <table class="table">
@@ -74,14 +74,14 @@ displayAlerts();
       </div>
       <div class="d-flex gap-1">
         <div>
-          <?php echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/user/UpdateUser.php?id=" . $_GET['id'] . "'>Modifier</a>"; ?>
+          <?php echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/user/UpdateUser.php?id=" . $_GET["id"] . "'>Modifier</a>"; ?>
         </div>
         <div>
           <?php
           if ($data["status"] == 1) {
-            echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/user/DeactivateUser.php?deactivateid=" . $_GET['id'] . "'>Désactiver</a>";
+            echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/user/DeactivateUser.php?deactivateid=" . $_GET["id"] . "'>Désactiver</a>";
           } else {
-            echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/user/ReactivateUser.php?reactivateid=" . $_GET['id'] . "'>Réactiver</a>";
+            echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/user/ReactivateUser.php?reactivateid=" . $_GET["id"] . "'>Réactiver</a>";
           }
           ?>
         </div>

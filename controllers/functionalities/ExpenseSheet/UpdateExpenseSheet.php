@@ -8,9 +8,9 @@ require("../../../models/functionalities/ManageKilometerCosts.php");
 
 $data = get_expense_sheet_data();
 
-if (isset($_GET['updateid'])) {
+if (isset($_GET["updateid"])) {
   $kilometer_costs_data = get_kilometer_cost_data();
-  $expense_sheet = [":ui" => $_SESSION["id"], ":ri" => $_GET['updateid'], ":rd" => $_POST["request_date"], ":sd" => $_POST["start_date"], ":ed" => $_POST["end_date"]];
+  $expense_sheet = [":ui" => $_SESSION["id"], ":ri" => $_GET["updateid"], ":rd" => $_POST["request_date"], ":sd" => $_POST["start_date"], ":ed" => $_POST["end_date"]];
   $receipts = [];
   $target_dir = "../../../../GSB-WEB-APP/assets/uploads/";
   $uploadOk = NULL;
@@ -23,11 +23,11 @@ if (isset($_GET['updateid'])) {
         $expense_sheet[":te"] = $_POST["transport_expense"];
 
         if (!empty($_FILES["transport_expense_file"]["name"])) {
-          $receipts[":tef"] = $target_dir . "transport/" . $_GET['updateid'] . "_" . basename($_FILES["transport_expense_file"]["name"]);
+          $receipts[":tef"] = $target_dir . "transport/" . $_GET["updateid"] . "_" . basename($_FILES["transport_expense_file"]["name"]);
         } else {
           $_SESSION["http_status"] = 400;
           $_SESSION["message"] = "Vous avez sélectionné un mode de transport mais n'avez fourni aucun justificatif. Veuillez recommencer.";
-          header("Location: UpdateExpenseSheet.php?updateid=" . $_GET['updateid']);
+          header("Location: UpdateExpenseSheet.php?updateid=" . $_GET["updateid"]);
         }
 
         if ($expense_sheet[":te"] > 2500) {
@@ -45,7 +45,7 @@ if (isset($_GET['updateid'])) {
       } else {
         $_SESSION["http_status"] = 400;
         $_SESSION["message"] = "Vous avez sélectionné un mode de transport mais n'avez saisi aucun montant. Veuillez recommencer.";
-        header("Location: UpdateExpenseSheet.php?updateid=" . $_GET['updateid']);
+        header("Location: UpdateExpenseSheet.php?updateid=" . $_GET["updateid"]);
       }
     } else {
       if (!empty($_POST["kilometers_number"])) {
@@ -67,7 +67,7 @@ if (isset($_GET['updateid'])) {
       } else {
         $_SESSION["http_status"] = 400;
         $_SESSION["message"] = "Vous avez sélectionné le mode de transport 'Voiture' mais n'avez saisi aucun nombre de kilomètres. Veuillez recommencer.";
-        header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+        header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
       }
     }
   } else {
@@ -81,15 +81,15 @@ if (isset($_GET['updateid'])) {
     } else {
       $_SESSION["http_status"] = 400;
       $_SESSION["message"] = "Vous avez saisi un montant concernant les frais d'hébergement mais n'avez saisi aucun nombre de nuitées. Veuillez recommencer.";
-      header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+      header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
     }
 
     if (!empty($_FILES["accommodation_expense_file"]["name"])) {
-      $receipts[":aef"] = $target_dir . "accommodation/" . $_GET['updateid'] . "_" . basename($_FILES["accommodation_expense_file"]["name"]);
+      $receipts[":aef"] = $target_dir . "accommodation/" . $_GET["updateid"] . "_" . basename($_FILES["accommodation_expense_file"]["name"]);
     } else {
       $_SESSION["http_status"] = 400;
       $_SESSION["message"] = "Vous avez saisi un montant concernant les frais d'hébergement mais n'avez fourni aucun justificatif. Veuillez recommencer.";
-      header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+      header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
     }
 
     if (($expense_sheet[":ae"] / $expense_sheet[":nn"]) > 250) {
@@ -110,11 +110,11 @@ if (isset($_GET['updateid'])) {
     $expense_sheet[":fe"] = $_POST["food_expense"];
 
     if (!empty($_FILES["food_expense_file"]["name"])) {
-      $receipts[":fef"] = $target_dir . "food/" . $_GET['updateid'] . "_" . basename($_FILES["food_expense_file"]["name"]);
+      $receipts[":fef"] = $target_dir . "food/" . $_GET["updateid"] . "_" . basename($_FILES["food_expense_file"]["name"]);
     } else {
       $_SESSION["http_status"] = 400;
       $_SESSION["message"] = "Vous avez saisi un montant concernant les frais d'alimentation mais n'avez fourni aucun justificatif. Veuillez recommencer.";
-      header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+      header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
     }
 
     if ($expense_sheet[":fe"] > 300) {
@@ -134,11 +134,11 @@ if (isset($_GET['updateid'])) {
     $expense_sheet[":oe"] = $_POST["other_expense"];
 
     if (!empty($_FILES["other_expense_file"]["name"])) {
-      $receipts[":oef"] = $target_dir . "other/" . $_GET['updateid'] . "_" . basename($_FILES["other_expense_file"]["name"]);
+      $receipts[":oef"] = $target_dir . "other/" . $_GET["updateid"] . "_" . basename($_FILES["other_expense_file"]["name"]);
     } else {
       $_SESSION["http_status"] = 400;
       $_SESSION["message"] = "Vous avez saisi un montant concernant des frais autres mais n'avez fourni aucun justificatif. Veuillez recommencer.";
-      header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+      header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
     }
 
     if (!empty($_POST["message"])) {
@@ -146,7 +146,7 @@ if (isset($_GET['updateid'])) {
     } else {
       $_SESSION["http_status"] = 400;
       $_SESSION["message"] = "Vous avez saisi un montant concernant des frais autres mais aucun message. Veuillez recommencer.";
-      header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+      header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
     }
 
     if ($expense_sheet[":oe"] > 200) {
@@ -203,7 +203,7 @@ if (isset($_GET['updateid'])) {
     if (empty($expense_sheet[":kn"]) && empty($expense_sheet[":te"]) && empty($expense_sheet[":ae"]) && empty($expense_sheet[":fe"]) && empty($expense_sheet[":oe"])) {
       $_SESSION["http_status"] = 400;
       $_SESSION["message"] = "Vous devez saisir un montant. Veuillez recommencer.";
-      header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+      header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
     } else {
       $expense_sheet[":ta"] = $expense_sheet[":ke"] + $expense_sheet[":te"] + $expense_sheet[":ae"] + $expense_sheet[":fe"] + $expense_sheet[":oe"];
       $expense_sheet[":ta"] = round($expense_sheet[":ta"], 2);
@@ -223,18 +223,18 @@ if (isset($_GET['updateid'])) {
         } else {
           $_SESSION["http_status"] = 400;
           $_SESSION["message"] = "Un problème est survenu.";
-          header("Location: UpdateExpenseSheet.php?updateid=" . $_GET['updateid']);
+          header("Location: UpdateExpenseSheet.php?updateid=" . $_GET["updateid"]);
         }
       } else {
         $_SESSION["http_status"] = 400;
         $_SESSION["message"] = "Un problème est survenu.";
-        header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+        header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
       }
     }
   } else {
     $_SESSION["http_status"] = 400;
     $_SESSION["message"] = "Un problème est survenu lors du téléchargement des fichiers. Veuillez recommencer.";
-    header("Location: UpdateExpenseSheet.php?id=" . $_GET['updateid']);
+    header("Location: UpdateExpenseSheet.php?id=" . $_GET["updateid"]);
   }
 }
 

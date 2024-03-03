@@ -31,7 +31,7 @@ function get_user_data()
 function insert_user_data($user)
 {
   try {
-    $sql = 'INSERT INTO users (kilometer_costs_id, role_id, first_name, last_name, email, password, status) VALUES (:kci, :ri, :fn, :ln, :e, :p, :s)';
+    $sql = "INSERT INTO users (kilometer_costs_id, role_id, first_name, last_name, email, password, status) VALUES (:kci, :ri, :fn, :ln, :e, :p, :s)";
     $request = dbConnection()->prepare($sql);
     $request->execute($user);
   } catch (Exception $e) {
@@ -43,14 +43,14 @@ function insert_user_data($user)
 function update_user_data($user)
 {
   try {
-    $sql = 'UPDATE users SET kilometer_costs_id=:kci, role_id=:ri, first_name=:fn, last_name=:ln, email=:e WHERE user_id=:id';
+    $sql = "UPDATE users SET kilometer_costs_id=:kci, role_id=:ri, first_name=:fn, last_name=:ln, email=:e WHERE user_id=:id";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(':kci', $user[':kci']);
-    $request->bindParam(':ri', $user[':ri']);
-    $request->bindParam(':fn', $user[':fn']);
-    $request->bindParam(':ln', $user[':ln']);
-    $request->bindParam(':e', $user[':e']);
-    $request->bindParam(':id', $_GET["updateid"]);
+    $request->bindParam(":kci", $user[":kci"]);
+    $request->bindParam(":ri", $user[":ri"]);
+    $request->bindParam(":fn", $user[":fn"]);
+    $request->bindParam(":ln", $user[":ln"]);
+    $request->bindParam(":e", $user[":e"]);
+    $request->bindParam(":id", $_GET["updateid"]);
     $request->execute();
   } catch (Exception $e) {
     $error = "Erreur : " . $e->getMessage();

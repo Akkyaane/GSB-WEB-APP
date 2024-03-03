@@ -23,13 +23,13 @@ displayAlerts();
     <nav class="navbar">
       <ul class="nav fw-medium border-bottom border-1">
         <?php
-        if ($_SESSION['role'] == 1) {
+        if ($_SESSION["role"] == 1) {
           echo "<li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/administrator.php?manageAccount'>Mon compte</a></li>
                   <li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/administrator.php?logout'>Déconnexion</a></li>";
         }
-        if ($_SESSION['role'] == 2) {
+        if ($_SESSION["role"] == 2) {
           echo "<li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/accountant.php?manageAccount'>Mon compte</a></li>
                   <li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
@@ -64,11 +64,11 @@ displayAlerts();
         </table>
       </div>
       <?php
-      if ($_SESSION['role'] == 1) {
+      if ($_SESSION["role"] == 1) {
         echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/KilometerCosts/UpdateKilometerCosts.php'>Modifier</a>
         <a class='btn btn-primary c-link' href='../../../controllers/portals/administrator.php'>Retour</a>";
       }
-      if ($_SESSION['role'] == 2) {
+      if ($_SESSION["role"] == 2) {
         echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
       }
       ?>

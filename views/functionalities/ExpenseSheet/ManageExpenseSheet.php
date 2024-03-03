@@ -23,13 +23,13 @@ displayAlerts();
     <nav class="navbar">
       <ul class="nav fw-medium border-bottom border-1">
         <?php
-        if ($_SESSION['role'] == 2) {
+        if ($_SESSION["role"] == 2) {
           echo "<li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/accountant.php?manageAccount'>Mon compte</a></li>
                   <li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/accountant.php?logout'>Déconnexion</a></li>";
         }
-        if ($_SESSION['role'] == 3) {
+        if ($_SESSION["role"] == 3) {
           echo "<li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
                   href='../../../controllers/portals/visitor.php?manageAccount'>Mon compte</a></li>
                   <li class='nav-item px-1'><a class='nav-link text-black c-nav-link'
@@ -43,7 +43,7 @@ displayAlerts();
   <main>
     <div class="container p-2">
       <h2 class="mb-3 fs-4 fw-bold">Gérer la fiche de frais n°
-        <?php echo $_GET['id'] ?>
+        <?php echo $_GET["id"] ?>
       </h2>
       <div class="container p-0">
         <div class="my-3">
@@ -66,13 +66,13 @@ displayAlerts();
           <h5 class="mb-3 fs-5 fw-medium">Transport</h5>
           <div class="mb-2">
             <p>Type de transport :
-              <?php if ($data['transport_category'] == '1') {
+              <?php if ($data["transport_category"] == "1") {
                 echo "Avion";
-              } else if ($data['transport_category'] == '2') {
+              } else if ($data["transport_category"] == "2") {
                 echo "Train";
-              } else if ($data['transport_category'] == '3') {
+              } else if ($data["transport_category"] == "3") {
                 echo "Bus/Car/Taxi";
-              } else if ($data['transport_category'] == '4') {
+              } else if ($data["transport_category"] == "4") {
                 echo "Voiture";
               } else {
                 echo "N/A";
@@ -81,46 +81,46 @@ displayAlerts();
           </div>
           <div class="mb-2">
             <label>Nombre total de kilomètres :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['kilometers_number']) {
-                                                                      echo $data['kilometers_number'];
+            <input type="number" class="form-control input" value="<?php if ($data["kilometers_number"]) {
+                                                                      echo $data["kilometers_number"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Montant total (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['kilometer_expense']) {
-                                                                      echo $data['kilometer_expense'];
-                                                                    } else if ($data['transport_expense']) {
-                                                                      echo $data['transport_expense'];
+            <input type="number" class="form-control input" value="<?php if ($data["kilometer_expense"]) {
+                                                                      echo $data["kilometer_expense"];
+                                                                    } else if ($data["transport_expense"]) {
+                                                                      echo $data["transport_expense"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Montant total remboursé (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['kilometer_expense_refund']) {
-                                                                      echo $data['kilometer_expense_refund'];
-                                                                    } else if ($data['transport_expense_refund']) {
-                                                                      echo $data['transport_expense_refund'];
+            <input type="number" class="form-control input" value="<?php if ($data["kilometer_expense_refund"]) {
+                                                                      echo $data["kilometer_expense_refund"];
+                                                                    } else if ($data["transport_expense_refund"]) {
+                                                                      echo $data["transport_expense_refund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Reste total à payer (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['kilometer_expense_unrefund']) {
-                                                                      echo $data['kilometer_expense_unrefund'];
-                                                                    } else if ($data['transport_expense_unrefund']) {
-                                                                      echo $data['transport_expense_unrefund'];
+            <input type="number" class="form-control input" value="<?php if ($data["kilometer_expense_unrefund"]) {
+                                                                      echo $data["kilometer_expense_unrefund"];
+                                                                    } else if ($data["transport_expense_unrefund"]) {
+                                                                      echo $data["transport_expense_unrefund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Justificatif :</label>
-            <?php if ($data['transport_expense_file']) {
-              echo "<a href=" . $data['transport_expense_file'] . " target='_blank'>Consulter</a>";
+            <?php if ($data["transport_expense_file"]) {
+              echo "<a href=" . $data["transport_expense_file"] . " target='_blank'>Consulter</a>";
             } else {
               echo "N/A";
             } ?>
@@ -130,40 +130,40 @@ displayAlerts();
           <h5 class="mb-3 fs-5 fw-medium">Hébergement</h5>
           <div class="mb-2">
             <label>Nombre total de nuitées :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['nights_number']) {
-                                                                      echo $data['nights_number'];
+            <input type="number" class="form-control input" value="<?php if ($data["nights_number"]) {
+                                                                      echo $data["nights_number"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Montant total (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['accommodation_expense']) {
-                                                                      echo $data['accommodation_expense'];
+            <input type="number" class="form-control input" value="<?php if ($data["accommodation_expense"]) {
+                                                                      echo $data["accommodation_expense"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Montant total remboursé (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['accommodation_expense_refund']) {
-                                                                      echo $data['accommodation_expense_refund'];
+            <input type="number" class="form-control input" value="<?php if ($data["accommodation_expense_refund"]) {
+                                                                      echo $data["accommodation_expense_refund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Reste total à payer (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['accommodation_expense_unrefund']) {
-                                                                      echo $data['accommodation_expense_unrefund'];
+            <input type="number" class="form-control input" value="<?php if ($data["accommodation_expense_unrefund"]) {
+                                                                      echo $data["accommodation_expense_unrefund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Justificatif :</label>
-            <?php if ($data['accommodation_expense_file']) {
-              echo "<a href=" . $data['accommodation_expense_file'] . " target='_blank'>Consulter</a>";
+            <?php if ($data["accommodation_expense_file"]) {
+              echo "<a href=" . $data["accommodation_expense_file"] . " target='_blank'>Consulter</a>";
             } else {
               echo "N/A";
             } ?>
@@ -173,32 +173,32 @@ displayAlerts();
           <h5 class="mb-3 fs-5 fw-medium">Alimentation</h5>
           <div class="mb-2">
             <label>Montant total (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['food_expense']) {
-                                                                      echo $data['food_expense'];
+            <input type="number" class="form-control input" value="<?php if ($data["food_expense"]) {
+                                                                      echo $data["food_expense"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Montant total remboursé (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['food_expense_refund']) {
-                                                                      echo $data['food_expense_refund'];
+            <input type="number" class="form-control input" value="<?php if ($data["food_expense_refund"]) {
+                                                                      echo $data["food_expense_refund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Reste total à payer (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['food_expense_unrefund']) {
-                                                                      echo $data['food_expense_unrefund'];
+            <input type="number" class="form-control input" value="<?php if ($data["food_expense_unrefund"]) {
+                                                                      echo $data["food_expense_unrefund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Justificatif :</label>
-            <?php if ($data['food_expense_file']) {
-              echo "<a href=" . $data['food_expense_file'] . " target='_blank'>Consulter</a>";
+            <?php if ($data["food_expense_file"]) {
+              echo "<a href=" . $data["food_expense_file"] . " target='_blank'>Consulter</a>";
             } else {
               echo "N/A";
             } ?>
@@ -208,40 +208,40 @@ displayAlerts();
           <h5 class="mb-3 fs-5 fw-medium">Autres</h5>
           <div class="mb-2">
             <label>Montant total (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['other_expense']) {
-                                                                      echo $data['other_expense'];
+            <input type="number" class="form-control input" value="<?php if ($data["other_expense"]) {
+                                                                      echo $data["other_expense"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Montant total remboursé (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['other_expense_refund']) {
-                                                                      echo $data['other_expense_refund'];
+            <input type="number" class="form-control input" value="<?php if ($data["other_expense_refund"]) {
+                                                                      echo $data["other_expense_refund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Reste total à payer (€) :</label>
-            <input type="number" class="form-control input" value="<?php if ($data['other_expense_unrefund']) {
-                                                                      echo $data['other_expense_unrefund'];
+            <input type="number" class="form-control input" value="<?php if ($data["other_expense_unrefund"]) {
+                                                                      echo $data["other_expense_unrefund"];
                                                                     } else {
                                                                       echo 0;
                                                                     } ?>" readonly>
           </div>
           <div class="mb-2">
             <label>Message :</label>
-            <textarea class="form-control input" rows="3" maxlength="500" readonly><?php if ($data['message']) {
-                                                                                      echo $data['message'];
+            <textarea class="form-control input" rows="3" maxlength="500" readonly><?php if ($data["message"]) {
+                                                                                      echo $data["message"];
                                                                                     } else {
                                                                                       echo "N/A";
                                                                                     } ?></textarea>
           </div>
           <div class="mb-2">
             <label>Justificatif :</label>
-            <?php if ($data['other_expense_file']) {
-              echo "<a href=" . $data['other_expense_file'] . " target='_blank'>Consulter</a>";
+            <?php if ($data["other_expense_file"]) {
+              echo "<a href=" . $data["other_expense_file"] . " target='_blank'>Consulter</a>";
             } else {
               echo "N/A";
             } ?>
@@ -252,9 +252,9 @@ displayAlerts();
           <div class="mb-2">
             <p>Statut :
               <?php
-              if ($data['treatment_status'] == 1) {
+              if ($data["treatment_status"] == 1) {
                 echo "Validée";
-              } else if ($data['treatment_status'] == 2) {
+              } else if ($data["treatment_status"] == 2) {
                 echo "Refusée";
               } else {
                 echo "En attente de traitement";
@@ -263,27 +263,27 @@ displayAlerts();
           </div>
           <div class="mb-2">
             <label>Motif du rejet :</label>
-            <textarea class="form-control input" rows="3" maxlength="500" readonly><?php if ($data['remark']) {
-                                                                                      echo $data['remark'];
+            <textarea class="form-control input" rows="3" maxlength="500" readonly><?php if ($data["remark"]) {
+                                                                                      echo $data["remark"];
                                                                                     } else {
                                                                                       echo "N/A";
                                                                                     } ?></textarea>
           </div>
           <div class="mb-2">
             <?php
-            if ($data['treatment_status']) {
-              if ($_SESSION['role'] == 2) {
+            if ($data["treatment_status"]) {
+              if ($_SESSION["role"] == 2) {
                 echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
               }
-              if ($_SESSION['role'] == 3) {
+              if ($_SESSION["role"] == 3) {
                 echo "<a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php'>Retour</a>";
               }
             } else {
-              if ($_SESSION['role'] == 2) {
+              if ($_SESSION["role"] == 2) {
                 echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/ProcessExpenseSheet.php?id=" . $_GET['id'] . "'>Traiter</a>
                 <a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
               }
-              if ($_SESSION['role'] == 3) {
+              if ($_SESSION["role"] == 3) {
                 echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/UpdateExpenseSheet.php?id=" . $_GET['id'] . "'>Modifier</a>
                                 <a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/DeleteExpenseSheet.php?id=" . $_GET['id'] . "'>Supprimer</a>
                                 <a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php'>Retour</a>";

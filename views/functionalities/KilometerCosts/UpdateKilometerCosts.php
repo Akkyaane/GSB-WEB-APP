@@ -46,10 +46,10 @@ displayAlerts();
               foreach ($data as $row) {
                 echo "<tr>
                         <td>
-                          <input type='number' step=0.01 class='form-control input' name='horsepower[]' id='horsepower' value='" . $row['horsepower'] . "'>
+                          <input type='number' step=0.01 class='form-control input' name='horsepower[]' id='horsepower' value='" . $row["horsepower"] . "'>
                         </td>
                         <td>
-                          <input type='float' step=0.01 class='form-control input' name='cost[]' id='cost' value='" . $row['cost'] . "'>
+                          <input type='float' step=0.01 class='form-control input' name='cost[]' id='cost' value='" . $row["cost"] . "'>
                         </td></tr>";
               }
               ?>

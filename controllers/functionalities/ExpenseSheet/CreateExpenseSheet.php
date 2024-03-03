@@ -234,12 +234,12 @@ if (isset($_POST["submit"])) {
           header("Location: ../../portals/visitor.php");
         } else {
           $_SESSION["http_status"] = 400;
-          $_SESSION["message"] = "Un problème est survenu.";
+          $_SESSION["message"] = "Un problème est survenu. Veuillez recommencer.";
           header("Location: CreateExpenseSheet.php");
         }
       } else {
         $_SESSION["http_status"] = 400;
-        $_SESSION["message"] = "Un problème est survenu.";
+        $_SESSION["message"] = "Un problème est survenu. Veuillez recommencer.";
         header("Location: CreateExpenseSheet.php");
       }
     }

@@ -31,10 +31,10 @@ displayAlerts();
   <main>
     <div class="container p-2">
       <h2 class="mb-3 fs-4 fw-bold">Modifier l'utilisateur n°
-        <?php echo $_GET['id'] ?>
+        <?php echo $_GET["id"] ?>
       </h2>
       <div class="container p-0">
-        <form action="../../../controllers/functionalities/user/UpdateUser.php?updateid=<?php echo $_GET['id'] ?>" method="post">
+        <form action="../../../controllers/functionalities/user/UpdateUser.php?updateid=<?php echo $_GET["id"] ?>" method="post">
           <table class="table">
             <thead>
               <tr>
@@ -49,24 +49,24 @@ displayAlerts();
               <?php
               echo "<tr>
                       <td>
-                        <input type='text' class='form-control input' name='last_name' id='last_name' value='" . $data['last_name'] . "' required>
+                        <input type='text' class='form-control input' name='last_name' id='last_name' value='" . $data["last_name"] . "' required>
                       </td>
                       <td>
-                        <input type='text' class='form-control input' name='first_name' id='first_name' value='" . $data['first_name'] . "' required>
+                        <input type='text' class='form-control input' name='first_name' id='first_name' value='" . $data["first_name"] . "' required>
                         </td>
                       <td>
-                        <input type='text' class='form-control input' name='email' id='email' value='" . $data['email'] . "' required>
+                        <input type='text' class='form-control input' name='email' id='email' value='" . $data["email"] . "' required>
                       </td>
                       <td>
                         <select class='form-select input' name='role' id='role' required>
                         <option selected hidden>Sélectionnez une fonction</option>
-                        <option value='1' " . (($data['role_id'] == '1') ? 'selected' : '') . ">Administrateur</option>
-                        <option value='2' " . (($data['role_id'] == '2') ? 'selected' : '') . ">Comptable</option>
-                        <option value='3' " . (($data['role_id'] == '3') ? 'selected' : '') . ">Visiteur médical</option>
+                        <option value='1' " . (($data["role_id"] == "1") ? "selected" : "") . ">Administrateur</option>
+                        <option value='2' " . (($data["role_id"] == "2") ? "selected" : "") . ">Comptable</option>
+                        <option value='3' " . (($data["role_id"] == "3") ? "selected" : "") . ">Visiteur médical</option>
                         </select>
                       </td>
                       <td>
-                        <input type='number' class='form-control input' name='horsepower' id='horsepower' value='" . $data['kilometer_costs_id'] . "'>
+                        <input type='number' class='form-control input' name='horsepower' id='horsepower' value='" . $data["kilometer_costs_id"] . "'>
                       </td></tr>";
               ?>
             </tbody>
