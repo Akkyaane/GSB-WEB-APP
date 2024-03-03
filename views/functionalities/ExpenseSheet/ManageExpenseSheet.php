@@ -281,12 +281,12 @@ displayAlerts();
             } else {
               if ($_SESSION['role'] == 2) {
                 echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/ProcessExpenseSheet?id=" . $_GET['id'] . "'>Traiter</a>
-                <a class='btn btn-primary c-link' href='../../../controllers/portals/accountant'>Retour</a>";
+                <a class='btn btn-primary c-link' href='../../../controllers/portals/accountant.php'>Retour</a>";
               }
               if ($_SESSION['role'] == 3) {
                 echo "<a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/UpdateExpenseSheet?id=" . $_GET['id'] . "'>Modifier</a>
                                 <a class='btn btn-primary c-link' href='../../../controllers/functionalities/ExpenseSheet/DeleteExpenseSheet?id=" . $_GET['id'] . "'>Supprimer</a>
-                                <a class='btn btn-primary c-link' href='../../../controllers/portals/visitor'>Retour</a>";
+                                <a class='btn btn-primary c-link' href='../../../controllers/portals/visitor.php'>Retour</a>";
               }
             }
             ?>
