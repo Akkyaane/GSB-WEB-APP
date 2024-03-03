@@ -13,29 +13,26 @@ $_SESSION["message"] = NULL;
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GSB - Portail Administrateur</title>
   <link rel="stylesheet" href="../../assets/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
-    integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous" />
   <script defer src="../../assets/script.js"></script>
 </head>
 
 <body>
   <header class="d-flex flex-column
-  justify-center align-items-center">
+  justify-content-center align-items-center">
     <img class="img-fluid" style="width: 150px;" src="../../assets/content/logo.png" alt="logo">
     <nav class="navbar">
       <ul class="nav fw-medium border-bottom border-1">
-        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-            href="../../controllers/portals/administrator.php?manageAccount">Mon compte</a></li>
-        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link"
-            href="../../controllers/portals/administrator.php?logout">Déconnexion</a></li>
+        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link" href="../../controllers/portals/administrator.php?manageAccount">Mon compte</a></li>
+        <li class="nav-item px-1"><a class="nav-link text-black c-nav-link" href="../../controllers/portals/administrator.php?logout">Déconnexion</a></li>
       </ul>
     </nav>
   </header>
 
   <main>
     <div class="container p-2">
-      <h2 class="mb-3 ps-2 fs-4 fw-bold">Tableau des utilisateurs enregistrés</h2>
-      <div class="container mb-3 p-0 overflow-auto" style="max-height: 50vh;">
+      <h2 class="mb-3 fs-4 fw-bold">Récapitulatif des utilisateurs enregistrés</h2>
+      <div class="container mb-3 p-0 overflow-auto" style="max-height: 40vh;">
         <table class="table">
           <thead>
             <tr>
@@ -50,29 +47,30 @@ $_SESSION["message"] = NULL;
           <tbody>
             <?php
             foreach ($data as $row) {
+              echo "<tr>
+                      <td>" . $row["last_name"] . "</td>
+                      <td>" . $row["first_name"] . "</td>
+                      <td>" . $row["email"] . "</td>";
+
               if ($row["role_id"] == "1") {
-                $row["role_id"] = "Administrateur";
+                echo "<td>Administrateur</td>";
               } else if ($row["role_id"] == "2") {
-                $row["role_id"] = "Comptable";
+                echo "<td>Comptable</td>";
               } else {
-                $row["role_id"] = "Visiteur";
+                echo "<td>Visiteur</td>";
               }
+
               if ($row["status"] == "1") {
-                $row["status"] = "Activé";
+                echo "<td>Activé</td>";
               } else {
-                $row["status"] = "Désactivé";
+                echo "<td>Désactivé</td>";
               }
-              echo "
-              <tr>
-                <td>" . $row["last_name"] . "</td>
-                <td>" . $row["first_name"] . "</td>
-                <td>" . $row["email"] . "</td>
-                <td>" . $row["role_id"] . "</td>
-                <td>" . $row["status"] . "</td>
-                <td>
-                <a class='btn btn-primary c-link' href='../../controllers/portals/administrator?manageUser&id=" . $row["user_id"] . "'>Gérer</a>
-                </td>";
+
+              echo "<td>
+                      <a class='btn btn-primary c-link' href='../../controllers/portals/administrator?manageUser&id=" . $row["user_id"] . "'>Gérer</a>
+                      </td>";
             }
+
             if (!$data) {
               echo "
             <td>Aucun résulat</td></tr>";
@@ -81,9 +79,9 @@ $_SESSION["message"] = NULL;
           </tbody>
         </table>
       </div>
-      <a class="btn btn-primary mb-1 c-link" href="../../controllers/portals/administrator?createUser">Créer
+      <a class="btn btn-primary c-link" href="../../controllers/portals/administrator?createUser">Créer
         un utilisateur</a>
-      <a class="btn btn-primary mb-1 c-link" href="../../controllers/portals/administrator?manageKilometerCosts">Gérer
+      <a class="btn btn-primary c-link" href="../../controllers/portals/administrator?manageKilometerCosts">Gérer
         les frais kilométriques</a>
     </div>
     <div class="container d-flex p-4">
@@ -109,7 +107,9 @@ $_SESSION["message"] = NULL;
         labels: ["Administrateurs", "Comptables", "Visiteurs"],
         datasets: [{
           label: "Total utilisateurs par rôle",
-          data: [<?php echo $administrators ?>, <?php echo $accountants ?>, <?php echo $visitors ?>],
+          data: [<?php echo $administrators ?>, <?php echo $accountants ?>,
+            <?php echo $visitors ?>
+          ],
           backgroundColor: [
             "rgba(54, 162, 235, 0.5)",
             "rgba(255, 159, 64, 0.5)",
@@ -154,9 +154,8 @@ $_SESSION["message"] = NULL;
       }
     });
   </script>
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL"
-    crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous">
+  </script>
 </body>
 
 </html>

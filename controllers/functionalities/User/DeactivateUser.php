@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 require('../../../assets/tools.php');
@@ -10,11 +10,11 @@ if ($_GET['deactivateid']) {
 
     if (!$result) {
         $_SESSION['http_status'] = 200;
-        $_SESSION['message'] = "Le compte a été bloqué.";
+        $_SESSION['message'] = "Le compte a été désactivé.";
         header('Location: ../../portals/administrator.php');
     } else {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Le compte a déjà été désactivé.";
-        header("Location: ../../portals/administrator.php");
+        header("Location: ManageUser?id=" . $_GET['deactivateid']);
     }
 }

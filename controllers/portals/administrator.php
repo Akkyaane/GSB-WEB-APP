@@ -6,7 +6,6 @@ require("../../models/db.php");
 require("../../models/functionalities/ManageUser.php");
 
 $data = get_users_data();
-
 $accountants = 0;
 $administrators = 0;
 $visitors = 0;

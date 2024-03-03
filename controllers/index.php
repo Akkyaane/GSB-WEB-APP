@@ -2,9 +2,9 @@
 
 session_start();
 
-if (!$_SESSION) {
+if (!$_SESSION['id']) {
     $_SESSION['http_status'] = 400;
-    $_SESSION['message'] = "Vous avez été déconnecté. Veuillez vous reconnecter";
+    $_SESSION['message'] = "Vous avez été déconnecté. Veuillez vous reconnecter.";
     header("Location: authentication/login.php");
 } else {
     if ($_SESSION['status'] == 1) {
@@ -23,7 +23,7 @@ if (!$_SESSION) {
         }
     } else {
         $_SESSION['http_status'] = 400;
-        $_SESSION['message'] = "Votre compte a été bloqué. Veuillez contacter un administrateur.";
+        $_SESSION['message'] = "Votre compte a été désactivé. Veuillez contacter un administrateur.";
         header("Location: authentication/login.php");
     }
 }

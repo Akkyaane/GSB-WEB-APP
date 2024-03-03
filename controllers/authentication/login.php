@@ -7,6 +7,7 @@ require("../../models/authentication/login.php");
 
 if (isset($_POST['submit'])) {
     $data = login();
+    
     if (empty($_POST['email']) || empty($_POST['password'])) {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Un ou plusieurs champs sont vides. Veuillez recommencer.";

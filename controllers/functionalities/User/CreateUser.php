@@ -11,15 +11,15 @@ if (isset($_POST['submit'])) {
     if ((count($user) != 5) || empty($_POST['password']) || empty($_POST['password_match'])) {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Un ou plusieurs champs sont vides. Veuillez recommencer.";
-        header('Location: ../../portals/administrator.php?createUser');
+        header('Location: CreateUser.php');
     } elseif ($_POST['password'] != $_POST['password_match']) {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Les mots de passe ne correspondent pas. Veuillez recommencer.";
-        header('Location: ../../portals/administrator?createUser');
+        header('Location: CreateUser.php');
     } else {
         $hash = password_hash($_POST['password'], PASSWORD_DEFAULT);
         $user[':p'] = $hash;
-        
+
         if (!$_POST['horsepower']) {
             $user['kci'] = NULL;
         } else {
@@ -41,9 +41,9 @@ if (isset($_POST['submit'])) {
         } else {
             $_SESSION['http_status'] = 400;
             $_SESSION['message'] = "Un problème est survenu. Veuillez recommencer.";
-            header('Location: ../../portals/administrator?createUser');
+            header('Location: CreateUser.php');
         }
     }
 }
 
-require("../../../views/functionalities/User/CreateUser.php");
+require("../../../views/functionalities/user/CreateUser.php");

@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 require('../../../assets/tools.php');
@@ -15,6 +15,6 @@ if ($_GET['reactivateid']) {
     } else {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Le compte a déjà été réactivé.";
-        header("Location: ../../portals/administrator.php?manageUser&id=" . $_GET["updateid"]);
+        header("Location: ManageUser?id=" . $_GET['reactivateid']);
     }
 }

@@ -6,7 +6,6 @@ require("../../models/db.php");
 require("../../models/functionalities/ManageExpenseSheet.php");
 
 $data = get_expense_sheets_data();
-
 $kilometer_expense_refund = 0;
 $kilometer_expense_unrefund = 0;
 $transport_expense_refund = 0;

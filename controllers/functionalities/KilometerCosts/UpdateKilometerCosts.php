@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 session_start();
 require('../../../assets/tools.php');
@@ -21,18 +21,17 @@ if (isset($_POST['submit'])) {
             $result = update_kilometer_costs_data($h, $c);
 
             var_dump($result);
-
         }
     }
 
     if (!$result) {
         $_SESSION['http_status'] = 200;
-        $_SESSION['message'] = "Le tableau a été modifié.";
+        $_SESSION['message'] = "Le tableau des frais kilométriques a été modifié.";
         header('Location: ../../portals/administrator.php');
     } else {
         $_SESSION['http_status'] = 400;
         $_SESSION['message'] = "Un problème est survenu. Veuillez recommencer.";
-        header("Location: ../../portals/administrator.php?manageKilometerCosts");
+        header("Location: UpdateKilometerCosts");
     }
 }
 
