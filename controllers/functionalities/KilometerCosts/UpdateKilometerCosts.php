@@ -19,8 +19,6 @@ if (isset($_POST["submit"])) {
       $c = $costs[$i];
 
       $result = update_kilometer_costs_data($h, $c);
-
-      var_dump($result);
     }
   }
 
