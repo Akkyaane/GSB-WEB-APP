@@ -5,7 +5,7 @@ require("../../../assets/tools.php");
 require("../../../models/db.php");
 require("../../../models/functionalities/ManageAccount.php");
 
-$data = get_account_data();
+$data = get_account_data($_SESSION["id"]);
 
 if (isset($_GET["updateid"])) {
   $user = [":fn" => $_POST["first_name"], ":ln" => $_POST["last_name"], ":e" => $_POST["email"]];
@@ -22,7 +22,7 @@ if (isset($_GET["updateid"])) {
       header("Location: ../../portals/visitor.php?manageAccount");
     }
   } else {
-    $result = update_account_data($user);
+    $result = update_account_data($user, $_GET["updateid"]);
 
     if (!$result) {
       $_SESSION["http_status"] = 200;

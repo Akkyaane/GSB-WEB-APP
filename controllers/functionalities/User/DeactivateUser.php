@@ -6,7 +6,7 @@ require("../../../models/db.php");
 require("../../../models/functionalities/ManageUser.php");
 
 if ($_GET["deactivateid"]) {
-  $result = deactivate_user();
+  $result = deactivate_user($_GET["deactivateid"]);
 
   if (!$result) {
     $_SESSION["http_status"] = 200;

@@ -6,7 +6,7 @@ require("../../models/db.php");
 require("../../models/authentication/login.php");
 
 if (isset($_POST["submit"])) {
-  $data = login();
+  $data = login($_POST["email"]);
 
   if (empty($_POST["email"]) || empty($_POST["password"])) {
     $_SESSION["http_status"] = 400;

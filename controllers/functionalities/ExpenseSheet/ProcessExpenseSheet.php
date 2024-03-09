@@ -5,7 +5,7 @@ require("../../../assets/tools.php");
 require("../../../models/db.php");
 require("../../../models/functionalities/ManageExpenseSheet.php");
 
-$data = get_expense_sheet_data();
+$data = get_expense_sheet_data($_GET["id"]);
 
 if (isset($_GET["processid"])) {
   if (isset($_POST["validate_submit"])) {
@@ -13,7 +13,7 @@ if (isset($_GET["processid"])) {
     $result = insert_treatment_data($treatment);
 
     if (!$result) {
-      $result = process_expense_sheet_data();
+      $result = process_expense_sheet_data($_GET["processid"]);
 
       if (!$result) {
         $_SESSION["http_status"] = 200;
@@ -41,7 +41,7 @@ if (isset($_GET["processid"])) {
       $result = insert_treatment_data($treatment);
 
       if (!$result) {
-        $result = process_expense_sheet_data();
+        $result = process_expense_sheet_data($_GET["processid"]);
 
         if (!$result) {
           $_SESSION["http_status"] = 200;

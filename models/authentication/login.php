@@ -1,10 +1,10 @@
 <?php
-function login()
+function login($email)
 {
   try {
     $sql = "SELECT * FROM users WHERE email = ?";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_POST["email"], PDO::PARAM_STR);
+    $request->bindParam(1, $email, PDO::PARAM_STR);
     $request->execute();
     $data = $request->fetch(PDO::FETCH_ASSOC);
     return $data;

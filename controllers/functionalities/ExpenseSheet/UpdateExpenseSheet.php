@@ -6,10 +6,10 @@ require("../../../models/db.php");
 require("../../../models/functionalities/ManageExpenseSheet.php");
 require("../../../models/functionalities/ManageKilometerCosts.php");
 
-$data = get_expense_sheet_data();
+$data = get_expense_sheet_data($_GET["id"]);
 
 if (isset($_GET["updateid"])) {
-  $kilometer_costs_data = get_kilometer_cost_data();
+  $kilometer_costs_data = get_kilometer_cost_data($_SESSION["horsepower"]);
   $expense_sheet = [":ui" => $_SESSION["id"], ":ri" => $_GET["updateid"], ":rd" => $_POST["request_date"], ":sd" => $_POST["start_date"], ":ed" => $_POST["end_date"]];
   $receipts = [];
   $target_dir = "../../../../GSB-WEB-APP/assets/uploads/";
@@ -214,7 +214,7 @@ if (isset($_GET["updateid"])) {
       $result = update_receipts_data($receipts, $receipts_id);
 
       if (!$result) {
-        $result = update_expense_sheet_data($expense_sheet);
+        $result = update_expense_sheet_data($expense_sheet, $_GET["updateid"]);
 
         if (!$result) {
           $_SESSION["http_status"] = 200;

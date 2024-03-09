@@ -5,7 +5,7 @@ require("../../../assets/tools.php");
 require("../../../models/db.php");
 require("../../../models/functionalities/ManageUser.php");
 
-$data = get_user_data();
+$data = get_user_data($_GET["id"]);
 
 if (isset($_GET["updateid"])) {
   $user = [":ri" => intval($_POST["role"]), ":fn" => $_POST["first_name"], ":ln" => $_POST["last_name"], ":e" => $_POST["email"]];
@@ -27,7 +27,7 @@ if (isset($_GET["updateid"])) {
       }
     }
 
-    $result = update_user_data($user);
+    $result = update_user_data($user, $_GET["updateid"]);
 
     if (!$result) {
       $_SESSION["http_status"] = 200;

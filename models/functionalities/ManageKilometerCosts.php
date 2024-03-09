@@ -14,12 +14,12 @@ function get_kilometer_costs_data()
   }
 }
 
-function get_kilometer_cost_data()
+function get_kilometer_cost_data($id)
 {
   try {
     $sql = "SELECT * FROM kilometer_costs kc WHERE kc.kilometer_cost_id = ?";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_SESSION["horsepower"], PDO::PARAM_INT);
+    $request->bindParam(1, $id, PDO::PARAM_INT);
     $request->execute();
     $data = $request->fetch(PDO::FETCH_ASSOC);
     return $data;

@@ -1,11 +1,11 @@
 <?php
 
-function get_account_data()
+function get_account_data($id)
 {
   try {
     $sql = "SELECT * FROM users u where u.user_id = ?";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_SESSION["id"], PDO::PARAM_INT);
+    $request->bindParam(1, $id, PDO::PARAM_INT);
     $request->execute();
     $data = $request->fetch(PDO::FETCH_ASSOC);
     return $data;
@@ -15,7 +15,7 @@ function get_account_data()
   }
 }
 
-function update_account_data($user)
+function update_account_data($user, $id)
 {
   try {
     $sql = "UPDATE users SET first_name=:fn, last_name=:ln, email=:e WHERE user_id=:id";
@@ -23,7 +23,7 @@ function update_account_data($user)
     $request->bindParam(":fn", $user[":fn"]);
     $request->bindParam(":ln", $user[":ln"]);
     $request->bindParam(":e", $user[":e"]);
-    $request->bindParam(":id", $_GET["updateid"]);
+    $request->bindParam(":id", $id);
     $request->execute();
   } catch (Exception $e) {
     $error = "Erreur : " . $e->getMessage();

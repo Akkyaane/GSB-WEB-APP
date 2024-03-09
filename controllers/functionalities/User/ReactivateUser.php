@@ -6,7 +6,7 @@ require("../../../models/db.php");
 require("../../../models/functionalities/ManageUser.php");
 
 if ($_GET["reactivateid"]) {
-  $result = reactivate_user();
+  $result = reactivate_user($_GET["reactivateid"]);
 
   if (!$result) {
     $_SESSION["http_status"] = 200;

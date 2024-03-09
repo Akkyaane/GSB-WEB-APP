@@ -5,7 +5,7 @@ require("../../assets/tools.php");
 require("../../models/db.php");
 require("../../models/functionalities/ManageExpenseSheet.php");
 
-$data = get_user_expense_sheets_data();
+$data = get_user_expense_sheets_data($_SESSION["id"]);
 $kilometer_expense_refund = 0;
 $kilometer_expense_unrefund = 0;
 $transport_expense_refund = 0;

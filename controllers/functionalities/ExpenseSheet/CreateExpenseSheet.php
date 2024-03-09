@@ -7,7 +7,7 @@ require("../../../models/functionalities/ManageExpenseSheet.php");
 require("../../../models/functionalities/ManageKilometerCosts.php");
 
 if (isset($_POST["submit"])) {
-  $kilometer_costs_data = get_kilometer_cost_data();
+  $kilometer_costs_data = get_kilometer_cost_data($_SESSION["horsepower"]);
   $get_max_receipts_id_data = get_max_receipts_id_data();
   $max_receipts_id = $get_max_receipts_id_data["max_id"];
 

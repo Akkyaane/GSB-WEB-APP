@@ -14,12 +14,12 @@ function get_expense_sheets_data()
   }
 }
 
-function get_expense_sheet_data()
+function get_expense_sheet_data($id)
 {
   try {
     $sql = "SELECT e.*, r.*, t.* FROM expense_sheets e LEFT JOIN receipts r ON e.receipts_id = r.receipts_id LEFT JOIN treatment t ON e.treatment_id = t.treatment_id WHERE e.expense_sheet_id = ?";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
+    $request->bindParam(1, $id, PDO::PARAM_INT);
     $request->execute();
     $data = $request->fetch(PDO::FETCH_ASSOC);
     return $data;
@@ -29,29 +29,14 @@ function get_expense_sheet_data()
   }
 }
 
-function get_user_expense_sheets_data()
+function get_user_expense_sheets_data($id)
 {
   try {
     $sql = "SELECT u.user_id, e.*, t.* FROM users u INNER JOIN expense_sheets e ON u.user_id = e.user_id LEFT JOIN treatment t ON e.treatment_id = t.treatment_id WHERE u.user_id = ?";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_SESSION["id"], PDO::PARAM_INT);
+    $request->bindParam(1, $id, PDO::PARAM_INT);
     $request->execute();
     $data = $request->fetchAll(PDO::FETCH_ASSOC);
-    return $data;
-  } catch (Exception $e) {
-    $error = "Erreur : " . $e->getMessage();
-    return $error;
-  }
-}
-
-function get_receipts_data()
-{
-  try {
-    $sql = "SELECT e.*, r.* FROM expense_sheets e INNER JOIN receipts r ON e.receipts_id = r.receipts_id WHERE e.expense_sheet_id = ?";
-    $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
-    $request->execute();
-    $data = $request->fetch(PDO::FETCH_ASSOC);
     return $data;
   } catch (Exception $e) {
     $error = "Erreur : " . $e->getMessage();
@@ -85,7 +70,7 @@ function insert_expense_sheet_data($expense_sheet)
   }
 }
 
-function update_expense_sheet_data($expense_sheet)
+function update_expense_sheet_data($expense_sheet, $id)
 {
   try {
     $sql = "UPDATE expense_sheets SET user_id=:ui, receipts_id=:ri, request_date=:rd, start_date=:sd, end_date=:ed, transport_category=:tc, kilometers_number=:kn, kilometer_expense=:ke, kilometer_expense_refund=:ker, kilometer_expense_unrefund=:keu, transport_expense=:te, transport_expense_refund=:ter, transport_expense_unrefund=:teu, nights_number=:nn, accommodation_expense=:ae, accommodation_expense_refund=:aer, accommodation_expense_unrefund=:aeu, food_expense=:fe, food_expense_refund=:fer, food_expense_unrefund=:feu, other_expense=:oe, other_expense_refund=:oer, other_expense_unrefund=:oeu, message=:m, total_amount=:ta, total_amount_refund=:tar, total_amount_unrefund=:tau WHERE expense_sheet_id=:id";
@@ -117,7 +102,7 @@ function update_expense_sheet_data($expense_sheet)
     $request->bindParam(":ta", $expense_sheet[":ta"]);
     $request->bindParam(":tar", $expense_sheet[":tar"]);
     $request->bindParam(":tau", $expense_sheet[":tau"]);
-    $request->bindParam(":id", $_GET["updateid"]);
+    $request->bindParam(":id", $id);
     $request->execute();
   } catch (Exception $e) {
     $error = "Erreur : " . $e->getMessage();
@@ -125,12 +110,12 @@ function update_expense_sheet_data($expense_sheet)
   }
 }
 
-function delete_expense_sheet_data()
+function delete_expense_sheet_data($id)
 {
   try {
     $sql = "DELETE FROM expense_sheets WHERE expense_sheet_id = ?";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(1, $_GET["id"], PDO::PARAM_INT);
+    $request->bindParam(1, $id, PDO::PARAM_INT);
     $request->execute();
   } catch (Exception $e) {
     $error = "Erreur : " . $e->getMessage();
@@ -138,13 +123,13 @@ function delete_expense_sheet_data()
   }
 }
 
-function process_expense_sheet_data()
+function process_expense_sheet_data($id)
 {
   try {
     $sql = "UPDATE expense_sheets SET treatment_id=:ti WHERE expense_sheet_id=:id";
     $request = dbConnection()->prepare($sql);
-    $request->bindParam(":ti", $_GET["processid"]);
-    $request->bindParam(":id", $_GET["processid"]);
+    $request->bindParam(":ti", $id);
+    $request->bindParam(":id", $id);
     $request->execute();
   } catch (Exception $e) {
     $error = "Erreur : " . $e->getMessage();

@@ -76,7 +76,7 @@ $_SESSION["message"] = NULL;
               } else {
                 echo "<td>En traitement</td>";
               }
-              
+
               echo "<td><a class='btn btn-primary c-link' href='../../controllers/portals/accountant.php?manageExpenseSheet&id=" . $row["expense_sheet_id"] . "'>Consulter</a></td></tr>";
             }
             if (!$data) {

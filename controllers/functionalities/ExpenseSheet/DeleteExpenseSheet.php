@@ -5,7 +5,7 @@ require("../../../assets/tools.php");
 require("../../../models/db.php");
 require("../../../models/functionalities/ManageExpenseSheet.php");
 
-$result = delete_expense_sheet_data();
+$result = delete_expense_sheet_data($_GET["id"]);
 
 if (!$result) {
   $_SESSION["http_status"] = 200;
