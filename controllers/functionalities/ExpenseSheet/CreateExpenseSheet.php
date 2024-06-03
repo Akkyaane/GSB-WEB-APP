@@ -19,7 +19,7 @@ if (isset($_POST["submit"])) {
 
   $expense_sheet = [":ui" => $_SESSION["id"], ":ri" => $max_receipts_id, ":rd" => $_POST["request_date"], ":sd" => $_POST["start_date"], ":ed" => $_POST["end_date"]];
   $receipts = [];
-  $target_dir = "../../../../GSB-WEB-APP/assets/uploads/";
+  $target_dir = "../../../assets/uploads/";
   $uploadOk = NULL;
 
   if (!empty($_POST["transport_category"])) {

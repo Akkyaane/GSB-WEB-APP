@@ -37,7 +37,7 @@ displayAlerts();
         montant maximum remboursé par l'entreprise. Si dépassé, le reste est à votre charge.
         Veuillez laisser le champ vide, si aucune dépense n'a été faite.</p>
       <div class="container p-0">
-        <form action="../../../controllers/functionalities/ExpenseSheet/UpdateExpenseSheet?updateid=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
+        <form action="../../../controllers/functionalities/ExpenseSheet/UpdateExpenseSheet.php?updateid=<?php echo $_GET["id"] ?>" method="post" enctype="multipart/form-data">
           <div class="my-3">
             <h3 class="mb-3 fs-5 fw-semibold">Informations générales</h3>
             <div class="mb-2">

@@ -41,4 +41,4 @@ if (isset($_GET["updateid"])) {
   }
 }
 
-require("../../../views/functionalities/User/UpdateUser.php");
+require("../../../views/functionalities/user/UpdateUser.php");

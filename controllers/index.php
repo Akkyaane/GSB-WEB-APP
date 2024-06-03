@@ -3,8 +3,6 @@
 session_start();
 
 if (!$_SESSION["id"]) {
-  $_SESSION["http_status"] = 400;
-  $_SESSION["message"] = "Vous avez été déconnecté. Veuillez vous reconnecter.";
   header("Location: authentication/login.php");
 } else {
   if ($_SESSION["status"] == 1) {
